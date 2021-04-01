@@ -1,7 +1,6 @@
 const canvasSketch = require('canvas-sketch');
+/*Linear interpolation function */
 const { lerp } = require('canvas-sketch-util/math');
-const random = require('canvas-sketch-util/random')
-const palettes = require('nice-color-palettes')
 
 const settings = {
   dimensions: [2048, 2048],
@@ -31,6 +30,7 @@ const sketch = () => {
 
   /* Create the grid */
   const points = createGrid()
+  const margin = 200;
 
   return ({ context, width, height }) => {
     context.fillStyle = 'white';
@@ -38,12 +38,12 @@ const sketch = () => {
 
     points.forEach(([u, v]) => {
       /* To distribute de points around the grid*/
-      const x = u * width;
-      const y = v * height;
+      const x = lerp(margin, width - margin, u);
+      const y = lerp(margin, height - margin, v);
 
       /* Create a form */
       context.beginPath();
-      context.arc(x, y, 200, 0, Math.PI * 2, false);
+      context.arc(x, y, 50, 0, Math.PI * 2, false);
       context.stroke();
 
     })
