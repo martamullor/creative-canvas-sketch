@@ -1,6 +1,9 @@
 const canvasSketch = require('canvas-sketch');
 /*Linear interpolation function */
 const { lerp } = require('canvas-sketch-util/math');
+/*Random number generation */
+const random = require('canvas-sketch-util/random');
+
 
 const settings = {
   dimensions: [2048, 2048],
@@ -12,7 +15,7 @@ const sketch = () => {
   const createGrid = () => {
     const points = [];
     /* Count is the grid size */
-    const count = 5;
+    const count = 40;
     /* Distribute around the grid count working in two dimensions */
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
@@ -28,8 +31,12 @@ const sketch = () => {
     return points;
   }
 
+  /* Identifies every generative canvas */
+  random.setSeed(3)
+
   /* Create the grid */
-  const points = createGrid()
+  /* User filter function to create randomness */
+  const points = createGrid().filter(() => random.value() > 0.5)
   const margin = 200;
 
   return ({ context, width, height }) => {
@@ -43,8 +50,10 @@ const sketch = () => {
 
       /* Create a form */
       context.beginPath();
-      context.arc(x, y, 50, 0, Math.PI * 2, false);
+      context.arc(x, y, 5, 0, Math.PI * 2, false);
       context.stroke();
+      context.lineWidth = 15;
+
 
     })
   };
