@@ -27,7 +27,9 @@ const sketch = () => {
         /* Push the points of the grid */
         points.push({
           /* Random value times random.value() * 0.01 */
-          radius: random.value() * 0.02,
+          /* Use gaussian with not a grid effect we cannot have a negative 
+          radius and for that we use Math.abs() */
+          radius: Math.abs(random.gaussian() * 0.01),
           position: [u, v]
         })
       }
