@@ -15,7 +15,7 @@ const sketch = () => {
   const createGrid = () => {
     const points = [];
     /* Count is the grid size */
-    const count = 40;
+    const count = 30;
     /* Distribute around the grid count working in two dimensions */
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
@@ -25,14 +25,18 @@ const sketch = () => {
         const u = count <= 1 ? 0.5 : x / (count - 1);
         const v = count <= 1 ? 0.5 : y / (count - 1);
         /* Push the points of the grid */
-        points.push([u, v])
+        points.push({
+          /* Random value times random.value() * 0.01 */
+          radius: random.value() * 0.02,
+          position: [u, v]
+        })
       }
     }
     return points;
   }
 
   /* Identifies every generative canvas */
-  random.setSeed(3)
+  // random.setSeed(3)
 
   /* Create the grid */
   /* User filter function to create randomness */
@@ -43,17 +47,20 @@ const sketch = () => {
     context.fillStyle = 'white';
     context.fillRect(0, 0, width, height);
 
-    points.forEach(([u, v]) => {
+    points.forEach(data => {
+      /* Destructure de data that comes from the object*/
+      const { position, radius } = data;
+      const [u, v] = position;
       /* To distribute de points around the grid*/
       const x = lerp(margin, width - margin, u);
       const y = lerp(margin, height - margin, v);
 
       /* Create a form */
+      /* Radius relative from the page radius * width */
       context.beginPath();
-      context.arc(x, y, 5, 0, Math.PI * 2, false);
-      context.stroke();
-      context.lineWidth = 15;
-
+      context.arc(x, y, radius * width, 0, Math.PI * 2, false);
+      context.fillStyle = 'red';
+      context.fill();
 
     })
   };
