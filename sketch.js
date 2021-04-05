@@ -1,8 +1,11 @@
 const canvasSketch = require('canvas-sketch');
 /*Linear interpolation function */
 const { lerp } = require('canvas-sketch-util/math');
+const { range, rangeFloor } = require('canvas-sketch-util/random');
 /*Random number generation */
 const random = require('canvas-sketch-util/random');
+/*Random color palettes that appear in array */
+const palettes = require('nice-color-palettes');
 
 
 const settings = {
@@ -11,11 +14,16 @@ const settings = {
 
 const sketch = () => {
 
+  const colorCount = rangeFloor(1, 6)
+  /* Return only one array */
+  /* With slice we can use only a limited number of colors that we want */
+  const palette = random.shuffle(random.pick(palettes).slice(0, colorCount))
+
   /* Return the point on the grid */
   const createGrid = () => {
     const points = [];
     /* Count is the grid size */
-    const count = 30;
+    const count = 32;
     /* Distribute around the grid count working in two dimensions */
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
@@ -29,8 +37,9 @@ const sketch = () => {
           /* Random value times random.value() * 0.01 */
           /* Use gaussian with not a grid effect we cannot have a negative 
           radius and for that we use Math.abs() */
-          radius: Math.abs(random.gaussian() * 0.01),
-          position: [u, v]
+          radius: Math.abs(0.01 + random.gaussian() * 0.01),
+          position: [u, v],
+          color: random.pick(palette),
         })
       }
     }
@@ -51,7 +60,7 @@ const sketch = () => {
 
     points.forEach(data => {
       /* Destructure de data that comes from the object*/
-      const { position, radius } = data;
+      const { position, radius, color } = data;
       const [u, v] = position;
       /* To distribute de points around the grid*/
       const x = lerp(margin, width - margin, u);
@@ -61,7 +70,7 @@ const sketch = () => {
       /* Radius relative from the page radius * width */
       context.beginPath();
       context.arc(x, y, radius * width, 0, Math.PI * 2, false);
-      context.fillStyle = 'red';
+      context.fillStyle = color;
       context.fill();
 
     })
