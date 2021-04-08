@@ -1,7 +1,7 @@
 const canvasSketch = require('canvas-sketch');
 /*Linear interpolation function */
 const { lerp } = require('canvas-sketch-util/math');
-const { range, rangeFloor } = require('canvas-sketch-util/random');
+const { range, rangeFloor, noise2D } = require('canvas-sketch-util/random');
 /*Random number generation */
 const random = require('canvas-sketch-util/random');
 /*Random color palettes that appear in array */
@@ -23,7 +23,7 @@ const sketch = () => {
   const createGrid = () => {
     const points = [];
     /* Count is the grid size */
-    const count = 32;
+    const count = 30;
     /* Distribute around the grid count working in two dimensions */
     for (let x = 0; x < count; x++) {
       for (let y = 0; y < count; y++) {
@@ -33,11 +33,12 @@ const sketch = () => {
         const u = count <= 1 ? 0.5 : x / (count - 1);
         const v = count <= 1 ? 0.5 : y / (count - 1);
         /* Push the points of the grid */
+        const radius = Math.abs(random.noise2D(u, v) * 0.03)
         points.push({
           /* Random value times random.value() * 0.01 */
           /* Use gaussian with not a grid effect we cannot have a negative 
           radius and for that we use Math.abs() */
-          radius: Math.abs(0.01 + random.gaussian() * 0.01),
+          radius,
           position: [u, v],
           color: random.pick(palette),
         })
