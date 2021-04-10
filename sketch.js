@@ -1,12 +1,13 @@
 const canvasSketch = require('canvas-sketch');
 const { lerp } = require('canvas-sketch-util/math');
-const { range, rangeFloor, noise2D } = require('canvas-sketch-util/random');
+const { range, rangeFloor, noise2D, setSeed } = require('canvas-sketch-util/random');
 const random = require('canvas-sketch-util/random');
 const palettes = require('nice-color-palettes');
 
-
+random.setSeed(random.getRandomSeed())
 const settings = {
   dimensions: [2048, 2048],
+  suffix: random.getSeed()
 };
 
 const sketch = () => {
