@@ -1,16 +1,16 @@
-# ✍🏻 Neomorphism Style
+# 🖍 Creative Coding - canvas-sketch
 
-Researching about some potential new trends in UI design, one caught my attention, it was neumorphic style, this style pretends to extrude from the background. It’s a raised shape made from the exact same material as the background.
+First exploring project using creative coding techniques for generate some kind of art.
 
 ![Image cover](img/cover-img.png)
 
-## 👩🏻‍💻Examples 
+## 👩🏻‍💻 Some Results 
 
 ![Example-2](img/buttons.gif)
 
-## 💥Demo 
+## 💥 Explore project 
 
-[You interact with all elements here](https://martamullor.github.io/neomorphism-frontend/)
+[See here full project](http://www.martamullor.com/projects/canvas)
 
 ## Contribute
 
