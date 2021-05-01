@@ -2,11 +2,7 @@
 
 First exploring project using creative coding techniques for generate some kind of art.
 
-![Image cover](images/creative-coding.png)
-
-## 👩🏻‍💻 Some Results 
-
-![Example-2](img/buttons.gif)
+![Image cover](images/creative-coding.jpg)
 
 ## 💥 Explore project 
 
