@@ -6,7 +6,7 @@ First exploring project using creative coding techniques for generate some kind 
 
 ## 💥 Explore project 
 
-[LINK TO PROJECT](http://www.martamullor.com/projects/canvas)
+[Go to project](http://www.martamullor.com/projects/canvas)
 
 ## Contribute
 
