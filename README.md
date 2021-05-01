@@ -2,7 +2,7 @@
 
 First exploring project using creative coding techniques for generate some kind of art.
 
-![Image cover](img/cover-img.png)
+![Image cover](images/creative-coding.png)
 
 ## 👩🏻‍💻 Some Results 
 
@@ -10,7 +10,7 @@ First exploring project using creative coding techniques for generate some kind 
 
 ## 💥 Explore project 
 
-[See here full project](http://www.martamullor.com/projects/canvas)
+[LINK TO PROJECT](http://www.martamullor.com/projects/canvas)
 
 ## Contribute
 
