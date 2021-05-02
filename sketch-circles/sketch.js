@@ -7,6 +7,12 @@ const random = require('canvas-sketch-util/random');
 /*Random color palettes that appear in array */
 const palettes = require('nice-color-palettes');
 
+let palette = random.pick(palettes);
+
+palette = random.shuffle(palette);
+palette = palette.slice(0, random.rangeFloor(2, palette.length + 1));
+
+const background = palette.shift();
 
 const settings = {
   dimensions: [2048, 2048],
@@ -56,7 +62,7 @@ const sketch = () => {
   const margin = 200;
 
   return ({ context, width, height }) => {
-    context.fillStyle = 'white';
+    context.fillStyle = background;
     context.fillRect(0, 0, width, height);
 
     points.forEach(data => {
