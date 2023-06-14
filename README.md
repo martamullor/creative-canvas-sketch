@@ -1,6 +1,6 @@
 # 🖍 Creative Coding - canvas-sketch
 
-First exploring project using creative coding techniques for generate some kind of art.
+First project exploration using creative coding techniques for generate some kind of art.
 
 ![Image cover](images/creative-coding.jpg)
 
